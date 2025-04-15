@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const TaskServices_1 = require("./services/TaskServices");
+const Task_1 = require("./modals/Task");
+const Fun_1 = require("./utils/Fun");
+const service = new TaskServices_1.TaskService();
+service.create("Build TypeScript project");
+service.create("Review pull request");
+service.create("Polling");
+service.update(2, { status: Task_1.TaskStatus.IN_PROGRESS });
+service.update(3, { status: Task_1.TaskStatus.DONE });
+console.log("📋 All Tasks:", service.list());
+console.log("✅ Done Tasks:", service.findByStatus(Task_1.TaskStatus.DONE));
+(0, Fun_1.Polling)();
